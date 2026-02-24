@@ -31,7 +31,6 @@
             margin: 0 auto;
             padding: 20px;
         }
-        /* Fondo con efecto sutil */
         .hero {
             background: rgba(255,255,255,0.75);
             backdrop-filter: blur(8px);
@@ -67,18 +66,12 @@
             font-size: 1.2rem;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         }
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin: 40px 0;
-        }
         .video-card {
             background: white;
             border-radius: 32px;
             padding: 25px;
             box-shadow: 0 15px 35px rgba(0,30,60,0.1);
-            transition: transform 0.2s;
+            margin-bottom: 30px;
             border: 1px solid rgba(255,255,255,0.7);
         }
         .video-card h2 {
@@ -108,7 +101,6 @@
             height: 100%;
             border: none;
         }
-        /* Estilo para el marco del video destacado */
         .featured-video-frame {
             border: 4px solid #ff8a5c;
             box-shadow: 0 20px 40px rgba(255,138,92,0.3);
@@ -136,21 +128,22 @@
             transform: translateY(-4px);
             box-shadow: 0 20px 35px rgba(20,50,100,0.3);
         }
+        .btn-highlight {
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 0 0 rgba(255,138,92,0.7);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,138,92,0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255,138,92,0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,138,92,0); }
+        }
         .btn-secondary {
             background: #ff8a5c;
             color: #13294b;
-            box-shadow: 0 15px 30px rgba(255,138,92,0.25);
-        }
-        .btn-secondary:hover {
-            background: #ff9e75;
         }
         .btn-whatsapp {
             background: #25D366;
             color: white;
-            box-shadow: 0 15px 30px rgba(37,211,102,0.25);
-        }
-        .btn-whatsapp:hover {
-            background: #20bd5a;
         }
         .bonus-section {
             background: linear-gradient(145deg, #13294b, #1e3a5f);
@@ -171,12 +164,6 @@
             color: #ffcc66;
             display: block;
         }
-        .bonus-text {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 20px auto;
-        }
         .footer-simple {
             text-align: center;
             padding: 25px 0 10px;
@@ -184,9 +171,6 @@
             color: #5c6f93;
             border-top: 1px solid rgba(0,0,0,0.05);
             margin-top: 20px;
-        }
-        .footer-simple p {
-            margin: 5px 0;
         }
         @media (max-width: 700px) {
             h1 { font-size: 2rem; }
@@ -197,7 +181,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- HERO CON GANCHO PRINCIPAL (incluye nombre de la página) -->
+        <!-- HERO -->
         <div class="hero">
             <h1>🚀 Aiviralazusa: Automatiza tus ingresos con IA + Redes Sociales</h1>
             <p class="subhead">
@@ -209,50 +193,38 @@
             </div>
         </div>
 
-        <!-- VIDEO DESTACADO CON MARCO (wcxMW0PcK7A) -->
-        <div class="featured-video-frame">
+        <!-- VIDEO DESTACADO CON MARCO (wcxMW0PcK7A) - ID: player1 -->
+        <div class="featured-video-frame" id="video1-container">
             <div class="video-container" style="margin: 0;">
-                <iframe src="https://www.youtube.com/embed/wcxMW0PcK7A" 
-                        title="Video destacado: IA y Redes Sociales" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
+                <div id="player1"></div>
             </div>
         </div>
 
-        <!-- PRIMER VIDEO: MIRA CÓMO FUNCIONA (2bWD3uLcwss) -->
-        <div class="video-card">
+        <!-- PRIMER VIDEO: MIRA CÓMO FUNCIONA (2bWD3uLcwss) - ID: player2 -->
+        <div class="video-card" id="video2-container">
             <h2><i class="fas fa-play-circle" style="color: #ff8a5c;"></i> Mira cómo funciona</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/2bWD3uLcwss" 
-                        title="Video presentación IA y redes" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
+                <div id="player2"></div>
             </div>
             <p style="text-align: center; color: #2d4b75;">En menos de 10 minutos entenderás por qué esta oportunidad está creciendo tan rápido.</p>
         </div>
 
         <!-- BOTÓN COMENZAR AHORA (NUEVO LINK PERSONALIZADO) -->
-        <div style="text-align: center; margin: 30px 0;">
+        <div style="text-align: center; margin: 30px 0;" id="register-button">
             <a href="https://aivdownline.haily.ai/?id=tipsai&firstname=Petra&lastname=Garcia" class="btn" target="_blank" rel="noopener">🔥 COMENZAR AHORA</a>
             <p style="margin-top: 12px; font-size: 0.95rem; color: #2d4b75;">Plazas limitadas – Oferta especial por lanzamiento</p>
         </div>
 
-        <!-- SEGUNDO VIDEO: TUTORIAL PASO A PASO (KeXiwOWlai8) - SIN BOTÓN EXTRA -->
-        <div class="video-card">
+        <!-- SEGUNDO VIDEO: TUTORIAL PASO A PASO (KeXiwOWlai8) - ID: player3 -->
+        <div class="video-card" id="video3-container">
             <h2><i class="fas fa-graduation-cap" style="color: #ff8a5c;"></i> Tutorial paso a paso</h2>
             <p>Sigue esta guía para configurar tu acceso y empezar a aplicar la estrategia de inmediato.</p>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/KeXiwOWlai8" 
-                        title="Tutorial paso a paso" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
+                <div id="player3"></div>
             </div>
         </div>
 
-        <!-- WHATSAPP DE CONTACTO GENERAL (NUEVO NÚMERO) -->
+        <!-- WHATSAPP DE CONTACTO GENERAL -->
         <div style="background: white; border-radius: 32px; padding: 30px; margin: 30px 0; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.03);">
             <h2 style="margin-bottom: 15px;">💬 ¿Tienes dudas? Escríbenos directo</h2>
             <p style="margin-bottom: 25px;">Nuestro equipo está listo para ayudarte con cualquier pregunta sobre el sistema o la membresía.</p>
@@ -262,7 +234,7 @@
             </a>
         </div>
 
-        <!-- BONOS: MÁS DE $1000 EN CLASES EN VIVO (NUEVO NÚMERO) -->
+        <!-- BONOS -->
         <div class="bonus-section">
             <h2>🎁 Bonos exclusivos por tiempo limitado</h2>
             <span class="bonus-highlight">+$1000 USD</span>
@@ -275,10 +247,85 @@
             <p style="margin-top: 15px; font-size: 0.95rem; opacity: 0.9;">*Recuerda incluir tu nombre y el comprobante en el mensaje.</p>
         </div>
 
-        <!-- FOOTER CON NOMBRE DE LA PÁGINA -->
+        <!-- FOOTER -->
         <div class="footer-simple">
             <p>© 2025 Aiviralazusa. Todos los derechos reservados.</p>
         </div>
     </div>
+
+    <!-- API de YouTube -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // Variables globales para los reproductores
+        var player1, player2, player3;
+
+        // Función que se llama automáticamente cuando la API está lista
+        function onYouTubeIframeAPIReady() {
+            player1 = new YT.Player('player1', {
+                height: '100%',
+                width: '100%',
+                videoId: 'wcxMW0PcK7A', // Video destacado
+                playerVars: { 'autoplay': 0, 'controls': 1, 'rel': 0 },
+                events: { 'onStateChange': onPlayer1StateChange }
+            });
+            player2 = new YT.Player('player2', {
+                height: '100%',
+                width: '100%',
+                videoId: '2bWD3uLcwss', // Mira cómo funciona
+                playerVars: { 'autoplay': 0, 'controls': 1, 'rel': 0 },
+                events: { 'onStateChange': onPlayer2StateChange }
+            });
+            player3 = new YT.Player('player3', {
+                height: '100%',
+                width: '100%',
+                videoId: 'KeXiwOWlai8', // Tutorial
+                playerVars: { 'autoplay': 0, 'controls': 1, 'rel': 0 },
+                events: { 'onStateChange': onPlayer3StateChange }
+            });
+        }
+
+        // Cuando termina el video 1 (estado 0)
+        function onPlayer1StateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                // Hacer scroll suave al video 2
+                document.getElementById('video2-container').scrollIntoView({ behavior: 'smooth' });
+                // Reproducir video 2 automáticamente
+                setTimeout(() => { player2.playVideo(); }, 800);
+            }
+        }
+
+        // Cuando termina el video 2
+        function onPlayer2StateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                // Hacer scroll suave al video 3
+                document.getElementById('video3-container').scrollIntoView({ behavior: 'smooth' });
+                // Reproducir video 3 automáticamente
+                setTimeout(() => { player3.playVideo(); }, 800);
+            }
+        }
+
+        // Cuando termina el video 3
+        function onPlayer3StateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                // Hacer scroll suave al botón de registro
+                document.getElementById('register-button').scrollIntoView({ behavior: 'smooth' });
+                // Añadir clase de resaltado al botón
+                const btn = document.querySelector('#register-button .btn');
+                btn.classList.add('btn-highlight');
+                // Quitar el resaltado después de 5 segundos
+                setTimeout(() => { btn.classList.remove('btn-highlight'); }, 5000);
+            }
+        }
+
+        // Función para asegurar que los contenedores mantengan su tamaño
+        window.addEventListener('load', function() {
+            // Ajustar tamaño de los divs de los reproductores al contenedor
+            var containers = document.querySelectorAll('.video-container');
+            containers.forEach(function(container) {
+                container.style.height = '0';
+                container.style.paddingBottom = '56.25%';
+            });
+        });
+    </script>
 </body>
 </html>
